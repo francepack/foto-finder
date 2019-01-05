@@ -58,6 +58,10 @@ h1 {
   width: 40%;
 }
 
+input {
+  text-indent: 10px;
+}
+
 .search-bar {
   border: solid 2px #C2B2B4;
   border-radius: 5px 0 0 5px;
@@ -111,6 +115,16 @@ button {
   background-color: #5B4447;
   color: #FFFFFF;
   height: 50px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #1393DD;
+  border-color: #1393DD;
+}
+
+button:focus {
+  outline: 0;
 }
 
 .input-buttons {
