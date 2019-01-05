@@ -139,4 +139,46 @@ button {
 main {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
+
+.card {
+  background-color: #FFFFFF;
+  border: solid 1px #938284;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 150px 90px 60px;
+  height: 350px;
+  margin: 40px auto 0 auto;
+  min-width: 250px;
+  max-width: 300px;
+  width: 22%;
+}
+
+h4 {
+  font-weight: 600;
+  margin: 13px;
+}
+
+p {
+  margin: 13px;
+}
+
+.card-foot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-foot img {
+  height: 30px;
+  margin: 15px;
+  width: 30px;
+}
+
+.card-body,
+.card-pic,
+.card-head {
+  border-bottom: 1px solid red;
+}
+
+
