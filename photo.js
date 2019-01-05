@@ -1,11 +1,20 @@
 class Photo {
-  constructor () {
-    this.id = ;
-    this.title = "";
-    this.caption = "";
-    this.file = "";
+  constructor(id, title, caption, file) {
+    this.id = id;
+    this.title = title;
+    this.caption = caption;
+    this.file = file;
   }
-  saveToStorage () {}
-  deleteFromStorage () {}
-  updatePhoto () {}
+
+  saveToStorage() {
+    localStorage.setItem(this.id, JSON.stringify(this));
+  }
+
+  deleteFromStorage() {
+    localStorage.removeItem(this.id);
+  }
+
+  updatePhoto() {
+    
+  }
 }

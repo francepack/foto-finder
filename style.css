@@ -11,8 +11,7 @@ body {
   grid-template-rows: 120px 480px auto;
 }
 
-header,
-article {
+.top-half {
   background-color: #3E2A35;
   color: #C2B2B4;
 }
@@ -145,6 +144,7 @@ main {
 .card {
   background-color: #FFFFFF;
   border: solid 1px #938284;
+  color: #5B4447;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px 150px 90px 60px;
@@ -165,6 +165,7 @@ p {
 }
 
 .card-foot {
+  background-color: #5B4447;
   display: flex;
   justify-content: space-between;
 }
