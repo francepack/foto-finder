@@ -8,7 +8,7 @@ body {
   background-color: #C2B2B4;
   font-family: 'Open Sans', sans-serif;
   display: grid;
-  grid-template-rows: 120px 300px auto;
+  grid-template-rows: 120px 480px auto;
 }
 
 header,
@@ -20,7 +20,7 @@ article {
 .top-bar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-content: center;
 }
 
 .title {
@@ -33,6 +33,7 @@ h1 {
   font-size: 46px;
   margin-left: 40px;
   text-transform: uppercase;
+  line-height: 40px;
 }
 
 .title-word-left {
@@ -61,10 +62,13 @@ h1 {
 .search-bar {
   border: solid 2px #C2B2B4;
   border-radius: 5px 0 0 5px;
-  color: /*#C2B2B4*/;
   height: 40px;
   text-indent: 6px;
-  width: 70%;
+  width: 65%;
+}
+
+::placeholder {
+  color: #B5ABAC;
 }
 
 .search-btn {
@@ -82,11 +86,57 @@ article {
   justify-content: center;
 }
 
+fieldset {
+  border: 0;
+  width: 50%;
+  margin-top: 20px;
+  max-width:;
+}
+
+label {
+  /*position: absolute;*/
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  height: 50px;
+  margin-bottom: 50px;
+}
+
 button {
   border: 0;
   background-color: #5B4447;
-  color: #C2B2B4;
+  color: #FFFFFF;
+  height: 50px;
+}
+
+.input-buttons {
+  display: grid;
+  grid-template-columns: 42% 16% 42%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "choose choose choose"
+  "fav . add";
+}
+
+.choose-btn {
+  grid-area: choose;
+  margin-bottom: 50px;
+}
+
+.favorite-btn {
+  grid-area: fav;
+}
+
+.add-btn {
+  grid-area: add;
 }
 
 main {
+  display: flex;
+  justify-content: space-around;
 }
