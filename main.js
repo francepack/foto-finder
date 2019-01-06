@@ -10,8 +10,7 @@ var photoArea = document.querySelector(".photo-card-area");
 var photoArray = [];
 
 //Event Listeners
-// searchBtn.addEventListener();
-// chooseBtn.addEventListener();
+searchBtn.addEventListener('click', searchPhotos);
 addBtn.addEventListener('click', createCard);
 // favoriteBtn.addEventListener();
 
@@ -69,6 +68,20 @@ function deleteCard (id) {
     return id === photo.id;
   });
   photoArray.splice(deleteIndex, 1)
+}
+
+function searchPhotos (event) {
+  event.preventDefault();
+  var searchWord = searchInput.value.toUpperCase();
+  var filteredPhotos = photoArray.filter(function(obj) {
+    var titleText = obj.title.toUpperCase();
+    var captionText = obj.caption.toUpperCase();
+    return titleText.includes(searchWord) || captionText.includes(searchWord);
+  });
+  photoArea.innerHTML = "";
+  filteredPhotos.forEach(function(obj) {
+    appendCard(obj)
+  })
 }
 
 
