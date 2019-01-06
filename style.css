@@ -224,26 +224,67 @@ p {
 
 /* Media Queries ****************** */
  @media screen and (max-width: 730px) {
-    body {
-      grid-template-rows: 200px 480px auto;
-    }
-    .top-bar {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .search-area {
-      margin: 0;
-      width: 100%
-      justify-content: flex-start;
-    }
-    .search-bar {
-      width: 100%;
-    }
-    fieldset {
-      width: 80%
-    }
-    form input {
-      min-width: 100px;
-    }
+  body {
+    grid-template-rows: 180px 480px auto;
+  }
+  .top-bar {
+    display: block;
+    padding: 20px 10% 20px 10%;
+  }
+  h1 {
+    margin: 0 0 40px 0;
+    text-align: center;
+  }
+  .search-area {
+    width: 100%;
+  }
+  .search-bar {
+    min-width: 20px;
+    width: 100%;
+  }
+  fieldset {
+    padding: 0;
+    width: 80%;
+  }
+  form input {
+    min-width: 20px;
+  }
  }
+
+ @media screen and (max-width: 505px) {
+  .top-bar {
+    padding: 20px 5% 20px 5%;
+  }
+  .title-word-left {
+    letter-spacing: 2px;
+  }
+  .logo {
+    margin: 0 -6px 0 -8px;
+  }
+  .title-word-right {
+    letter-spacing: 0;
+  }
+  fieldset {
+    width: 90%;
+  }
+}
+
+ @media screen and (max-width: 410px) {
+  h1 {
+    font-size: 36px;
+  }
+  .logo {
+    height: 40px;
+    width: 40px;
+  }
+  fieldset {
+    font-size: 14px;
+  }
+  .choose-file-btn + label {
+    padding-top: 18px;
+  }
+  .input-buttons {
+    grid-template-columns: 44% 12% 44%;
+  }
+}
 
