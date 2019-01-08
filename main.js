@@ -13,7 +13,7 @@ var reader = new FileReader();
 
 //Event Listeners
 searchInput.addEventListener('keyup', searchPhotos);
-addBtn.addEventListener('click', createCard);
+addBtn.addEventListener('click', createElement);
 // photoArea.addEventListener('click', function(e) {
 //   if (e.target.classList.contains("delete-img")) {
 //     deleteCard(e);
@@ -41,7 +41,7 @@ function createCard (e) {
     newPhoto.saveToStorage();
     photoArray.push(newPhoto);
     appendCard(newPhoto);
-    
+
   } else {
     alert('Please enter a photo title and caption.');
     return false;
@@ -62,7 +62,7 @@ function appendCard(photo) {
       <header class="card-head">
         <h4 class="card-head-text" contenteditable="true">${photo.title}</h4>
       </header>
-      <section class="card-pic" background-image=url("${photo.file}")></section>
+      <section class="card-pic"><img src="${photo.file}"></section>
       <section class="card-body">
         <p class="card-body-text" contenteditable="true">${photo.caption}</p>
       </section>
@@ -121,9 +121,9 @@ function searchPhotos (e) {
 // }
 
 function createElement(e) {
-  console.log(input)
-  if (input.files[0]) {
-    reader.readAsDataURL(input.files[0]); 
+  // console.log(input)
+  if (file.files[0]) {
+    reader.readAsDataURL(file.files[0]); 
     reader.onload = createCard;
   }
 }
