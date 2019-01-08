@@ -36,7 +36,7 @@ function createCard (e) {
   e.preventDefault();
   var titleInput = document.querySelector('.title-input');
   var captionInput = document.querySelector('.caption-input');
-  const newPhoto = new Photo(Date.now(), titleInput.value, captionInput.value);
+  const newPhoto = new Photo(Date.now(), titleInput.value, captionInput.value, e.target.result);
   if (captionInput.value !== "" && titleInput.value !== "") {
     newPhoto.saveToStorage();
     photoArray.push(newPhoto);
@@ -62,7 +62,7 @@ function appendCard(photo) {
       <header class="card-head">
         <h4 class="card-head-text" contenteditable="true">${photo.title}</h4>
       </header>
-      <section class="card-pic"><img src="${photo.file}"></section>
+      <section class="card-pic"><img src="${photo.file}" class="card-img"></section>
       <section class="card-body">
         <p class="card-body-text" contenteditable="true">${photo.caption}</p>
       </section>
