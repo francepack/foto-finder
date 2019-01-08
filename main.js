@@ -9,6 +9,8 @@ var addBtn = document.querySelector(".add-btn");
 var photoArea = document.querySelector(".photo-card-area");
 var photoArray = [];
 var reader = new FileReader();
+var buttonCount = 0;
+var favNum = document.querySelector(".fav-num");
 
 //Event Listeners
 searchInput.addEventListener('keyup', searchPhotos);
@@ -31,6 +33,17 @@ window.onload = function() {
     newPhoto = new Photo(parseObj.id, parseObj.title, parseObj.caption, parseObj.file, parseObj.favorite);
     photoArray.push(newPhoto);
     appendCard(newPhoto); 
+  })
+    countFavorites();
+    updateButtonCount();
+}
+
+function countFavorites() {
+  photoArray.forEach(function(count) {
+    if (count.favorite === true) {
+    console.log(count.favorite);
+    buttonCount += 1;
+    }
   })
 }
 
@@ -64,17 +77,25 @@ function findIndexNumber(objId) {
 
 function changeFavorite(id) {
   var cardIndex = findIndexNumber(id);
-  // var index = parseInt(cardIndex);
   console.log(cardIndex); 
   if (photoArray[cardIndex].favorite === false) {
     photoArray[cardIndex].favorite = true;
     event.target.src = "images/favorite-active.svg";
-    // saveToStorage();
+    photoArray[cardIndex].saveToStorage();
+    //button count function
+    buttonCount++;
     } else {
     photoArray[cardIndex].favorite = false;
     event.target.src = "images/favorite.svg";
-    // saveToStorage();  
+    photoArray[cardIndex].saveToStorage();
+    buttonCount--; 
     }
+    updateButtonCount();
+  }
+
+  function updateButtonCount() {
+    console.log('buttoncount');
+    favNum.innerHTML = buttonCount;
   }
 
 
