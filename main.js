@@ -8,7 +8,6 @@ var favoriteBtn = document.querySelector(".favorite-btn");
 var addBtn = document.querySelector(".add-btn");
 var photoArea = document.querySelector(".photo-card-area");
 var photoArray = [];
-var favoriteImage = [];
 var reader = new FileReader();
 
 //Event Listeners
@@ -55,20 +54,26 @@ function createCard (e) {
   }
 }
 
+function findIndexNumber(objId) {
+  for (var i = 0; i < photoArray.length; i++) {
+    if (array[i].id === objId) {
+      return i;
+    }
+  }
+}
+
 // function changeFavorite() {
-//   if (this.favorite === false) {
-//     console.log(15);
-//     element.src = "images/favorite-active.svg"
+//   var cardIndex = findIndexNumber(event.target.parentElement.parentElement.dataset.id); 
 //   }
 // }
 
 
 function appendCard(photo, fav) {
   var favoriteImg;
-  if(photo.favorite === true){
-    favoriteImg = "images/favorite-active.svg"
+  if(photo.favorite === true) {
+    favoriteImg = "images/favorite-active.svg";
   } else {
-    favoriteImg = "images/favorite.svg"
+    favoriteImg = "images/favorite.svg";
   }
   var card = 
     `<article class="card" data-id="${photo.id}">
