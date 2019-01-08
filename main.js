@@ -1,8 +1,8 @@
 //Button and Input grabs
 var searchInput = document.querySelector(".search-bar");
 var searchBtn = document.querySelector(".search-btn");
-// var titleInput = document.querySelector(".title-input");
-// var captionInput = document.querySelector(".caption-input");
+var titleInput = document.querySelector('.title-input');
+var captionInput = document.querySelector('.caption-input');
 var chooseBtn = document.querySelector(".choose-btn");
 var favoriteBtn = document.querySelector(".favorite-btn");
 var addBtn = document.querySelector(".add-btn");
@@ -20,22 +20,29 @@ addBtn.addEventListener('click', createElement);
 //   } else if (e.target.classList.contains("favorite-img")) {
 //     changeFavorite(e);
 //   }
-// })            idea for bottom bar event delegation
+// }) 
+
+//idea for bottom bar event delegation           
 
 window.onload = function() {
   var keys = Object.keys(localStorage);
     keys.forEach (key =>{
     var parseObj = JSON.parse(localStorage.getItem(key));
-    newPhoto = new Photo(parseObj.id, parseObj.title, parseObj.caption, parseObj.file, parseObj.fav);
+    newPhoto = new Photo(parseObj.id, parseObj.title, parseObj.caption, parseObj.file, parseObj.favorite);
     photoArray.push(newPhoto);
     appendCard(newPhoto); 
   })
 }
 
+function createElement(e) {
+  if (file.files[0]) {
+    reader.readAsDataURL(file.files[0]); 
+    reader.onload = createCard;
+  }
+}
+
 function createCard (e) {
   e.preventDefault();
-  var titleInput = document.querySelector('.title-input');
-  var captionInput = document.querySelector('.caption-input');
   const newPhoto = new Photo(Date.now(), titleInput.value, captionInput.value, e.target.result);
   if (captionInput.value !== "" && titleInput.value !== "") {
     newPhoto.saveToStorage();
@@ -48,7 +55,7 @@ function createCard (e) {
   }
 }
 
-// function changeHeart() {
+// function changeFavorite() {
 //   if (this.favorite === false) {
 //     console.log(15);
 //     element.src = "images/favorite-active.svg"
@@ -56,7 +63,13 @@ function createCard (e) {
 // }
 
 
-function appendCard(photo) {
+function appendCard(photo, fav) {
+  var favoriteImg;
+  if(photo.favorite === true){
+    favoriteImg = "images/favorite-active.svg"
+  } else {
+    favoriteImg = "images/favorite.svg"
+  }
   var card = 
     `<article class="card" data-id="${photo.id}">
       <header class="card-head">
@@ -67,8 +80,10 @@ function appendCard(photo) {
         <p class="card-body-text" contenteditable="true">${photo.caption}</p>
       </section>
       <footer class="card-foot">
-        <img src="images/delete.svg" class="delete-img"  onclick="deleteCard(${photo.id})">
-        <img src="images/favorite.svg" class="favorite-img">
+        <img src="images/delete.svg" class="delete-img" 
+        onclick="deleteCard(${photo.id})"
+        >
+        <img src="${favoriteImg}" class="favorite-img">
       </footer>
     </article>`
     photoArea.innerHTML = card + photoArea.innerHTML;
@@ -119,14 +134,6 @@ function searchPhotos (e) {
 //     photoSection.innerHTML += `<img src=${photo.file} />`
 //   })
 // }
-
-function createElement(e) {
-  // console.log(input)
-  if (file.files[0]) {
-    reader.readAsDataURL(file.files[0]); 
-    reader.onload = createCard;
-  }
-}
 
 // function addPhoto(e) {
 //   console.log(e.target.result);
