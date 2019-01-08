@@ -14,7 +14,13 @@ var reader = new FileReader();
 //Event Listeners
 searchInput.addEventListener('keyup', searchPhotos);
 addBtn.addEventListener('click', createCard);
-// favoriteBtn.addEventListener('click', changeHeart);
+// photoArea.addEventListener('click', function(e) {
+//   if (e.target.classList.contains("delete-img")) {
+//     deleteCard(e);
+//   } else if (e.target.classList.contains("favorite-img")) {
+//     changeFavorite(e);
+//   }
+// })            idea for bottom bar event delegation
 
 window.onload = function() {
   var keys = Object.keys(localStorage);
@@ -35,6 +41,7 @@ function createCard (e) {
     newPhoto.saveToStorage();
     photoArray.push(newPhoto);
     appendCard(newPhoto);
+    
   } else {
     alert('Please enter a photo title and caption.');
     return false;
@@ -60,8 +67,8 @@ function appendCard(photo) {
         <p class="card-body-text" contenteditable="true">${photo.caption}</p>
       </section>
       <footer class="card-foot">
-        <img src="images/delete.svg" onclick="deleteCard(${photo.id})">
-        <img src="images/favorite.svg" onclick="">
+        <img src="images/delete.svg" class="delete-img"  onclick="deleteCard(${photo.id})">
+        <img src="images/favorite.svg" class="favorite-img">
       </footer>
     </article>`
     photoArea.innerHTML = card + photoArea.innerHTML;
@@ -113,13 +120,13 @@ function searchPhotos (e) {
 //   })
 // }
 
-// function createElement(e) {
-//   console.log(input)
-//   if (input.files[0]) {
-//     reader.readAsDataURL(input.files[0]); 
-//     reader.onload = createCard;
-//   }
-// }
+function createElement(e) {
+  console.log(input)
+  if (input.files[0]) {
+    reader.readAsDataURL(input.files[0]); 
+    reader.onload = createCard;
+  }
+}
 
 // function addPhoto(e) {
 //   console.log(e.target.result);
