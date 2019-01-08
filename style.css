@@ -1,3 +1,4 @@
+/* Global ******************* */
 *,
 *:before,
 *:after {
@@ -8,11 +9,12 @@ body {
   background-color: #C2B2B4;
   font-family: 'Open Sans', sans-serif;
   display: grid;
-  grid-template-rows: 120px 300px auto;
+  grid-template-rows: 120px 480px auto;
 }
 
-header,
-article {
+/* Top bar ******************* */
+
+.top-half {
   background-color: #3E2A35;
   color: #C2B2B4;
 }
@@ -24,15 +26,16 @@ article {
 }
 
 .title {
-  display: flex;
-  align-items: center;
+  margin-top: 12px;
 }
 
 h1 {
   color: #FFFFFF;
   font-size: 46px;
+  margin-top: 0px;
   margin-left: 40px;
   text-transform: uppercase;
+  line-height: 40px;
 }
 
 .title-word-left {
@@ -58,13 +61,21 @@ h1 {
   width: 40%;
 }
 
+input {
+  text-indent: 10px;
+}
+
 .search-bar {
   border: solid 2px #C2B2B4;
   border-radius: 5px 0 0 5px;
-  color: /*#C2B2B4*/;
   height: 40px;
+  min-width: 230px;
   text-indent: 6px;
-  width: 70%;
+  width: 65%;
+}
+
+::placeholder {
+  color: #B5ABAC;
 }
 
 .search-btn {
@@ -72,7 +83,6 @@ h1 {
   border: solid 2px #C2B2B4;
   border-radius: 0 5px 5px 0;
   height: 40px;
-  margin-right: 30px;
   width: 40px;
 }
 
@@ -82,11 +92,222 @@ article {
   justify-content: center;
 }
 
+fieldset {
+  border: 0;
+  width: 50%;
+  margin-top: 20px;
+  max-width:;
+}
+
+label {
+  margin-bottom: 12px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset input {
+  height: 50px;
+  margin-bottom: 50px;
+  min-width: 460px;
+}
+
+.title-input {
+  margin-bottom: 22px;
+}
+
+.caption-input {
+  margin-bottom: 50px;
+}
+
 button {
   border: 0;
   background-color: #5B4447;
-  color: #C2B2B4;
+  color: #FFFFFF;
+  height: 50px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #1393DD;
+  border-color: #1393DD;
+}
+
+:focus {
+  outline: 0;
+}
+
+.input-buttons {
+  display: grid;
+  grid-template-columns: 42% 16% 42%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "choose choose choose"
+  "fav . add";
+}
+
+.choose-file-btn {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.choose-file-btn + label {
+  background-color: #5B4447;
+  color: white;  
+  display: inline-block;
+  grid-area: choose;
+  height: 50px;
+  margin-bottom: 50px;
+  padding-top: 14px;
+  text-align: center;
+}
+
+
+.choose-file-btn:focus + label,
+.choose-file-btn + label:hover {
+  background-color: #1393DD;
+  cursor: pointer;
+}
+
+.favorite-btn {
+  grid-area: fav;
+}
+
+.add-btn {
+  grid-area: add;
 }
 
 main {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
+
+.card {
+  background-color: #FFFFFF;
+  border: solid 1px #938284;
+  color: #5B4447;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 150px 90px 60px;
+  height: 350px;
+  margin: 40px auto 0 auto;
+  min-width: 250px;
+  max-width: 300px;
+  width: 22%;
+}
+
+h4 {
+  font-weight: 600;
+  margin: 13px;
+}
+
+p {
+  margin: 13px;
+}
+
+.card-foot {
+  background-color: #5B4447;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-foot img {
+  height: 30px;
+  margin: 15px;
+  width: 30px;
+}
+
+.card-body,
+.card-pic,
+.card-head {
+  border-bottom: 1px solid red;
+}
+
+/* Media Queries ****************** */
+ @media screen and (max-width: 730px) {
+  body {
+    grid-template-rows: 180px 480px auto;
+  }
+  .top-bar {
+    display: block;
+    padding: 20px 10% 20px 10%;
+  }
+  h1 {
+    margin: 0 0 40px 0;
+    text-align: center;
+  }
+  .search-area {
+    width: 100%;
+  }
+  .search-bar {
+    min-width: 20px;
+    width: 100%;
+  }
+  fieldset {
+    padding: 0;
+    width: 80%;
+  }
+  form input {
+    min-width: 20px;
+  }
+ }
+
+ @media screen and (max-width: 505px) {
+  .top-bar {
+    padding: 20px 5% 20px 5%;
+  }
+  .title-word-left {
+    letter-spacing: 2px;
+  }
+  .logo {
+    margin: 0 -6px 0 -8px;
+  }
+  .title-word-right {
+    letter-spacing: 0;
+  }
+  fieldset {
+    width: 90%;
+  }
+}
+
+ @media screen and (max-width: 410px) {
+  body {
+    grid-template-rows: 150px 365px auto;
+  }
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  .top-bar {
+    padding: 0 5% 0 5%;
+  }
+  .logo {
+    height: 40px;
+    width: 40px;
+  }
+  fieldset {
+    font-size: 14px;
+  }
+  fieldset input {
+    margin-bottom: 30px;
+  }
+  .choose-file-btn + label {
+    padding-top: 18px;
+    margin-bottom: 30px;
+  }
+  .input-buttons {
+    grid-template-columns: 44% 12% 44%;
+  }
+  .card {
+    margin: 20px auto 0 auto;
+    width: 90%;
+  }
+}
+

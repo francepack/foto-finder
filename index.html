@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>FotoFinder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="normalize.css">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <title>foto-finder</title>
 </head>
 <body>
-  <header class="top-bar">
+  <header class="top-bar top-half">
     <section class="title">
       <h1>
         <span class="title-word-left">foto</span>
@@ -18,25 +19,45 @@
     </section>
     <section class="search-area">
       <input placeholder="Search" class="search-bar">
-      <button class="search-btn"></button>
+      <button class="search-btn">
+        <i class="fas fa-search"></i>
+      </button>
     </section>
   </header>
-  <article>
-    <form>
-      <label class="input-label1">Title</label>
-      <input type="" name="" class="title-input">
-      <label class="input-label2">Caption</label>
-      <input type="" name="" class="caption-input">
-    </form>
-    <section>
-      <button class="choose-btn">Choose File</button>
-      <button class="fav-btn">View <span>0<span> Favorites</button>
-      <button class="add-btn">Add to Album</button>
-    </section>
+  <article class="top-half">
+    <fieldset>
+      <form>
+        <label class="input-label title-label">Title</label>
+        <input type="text" name="" class="title-input">
+        <label class="input-label caption-label">Caption</label>
+        <input type="text" name="" class="caption-input">
+      </form>
+      <section class="input-buttons">
+        <input type="file" name="file" id="file" class="choose-file-btn" />
+          <label for="file">Choose a file</label>
+        <button class="favorite-btn">View <span class="fav-num">0<span> Favorites</button>
+        <button class="add-btn">Add to Album</button>
+      </section>
+    </fieldset>
   </article>
-  <main>
-    
+  <main class="photo-card-area">
+    <article class="card">
+      <header class="card-head">
+        <h4 class="card-head-text">Waterfall Image</h4>
+      </header>
+      <section class="card-pic"></section>
+      <section class="card-body">
+        <p class="card-body-text">
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        </p>
+      </section>
+      <footer class="card-foot">
+        <img src="images/delete.svg">
+        <img src="images/favorite.svg" class="favorite-btn">
+      </footer>
+    </article>
   </main>
 </body>
+<script src='photo.js'></script>
 <script src='main.js'></script>
 </html>
