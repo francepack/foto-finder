@@ -197,10 +197,8 @@ main {
   grid-template-columns: 1fr;
   grid-template-rows: 50px 150px 90px 60px;
   height: 350px;
-  margin: 40px auto 0 auto;
-  min-width: 250px;
-  max-width: 300px;
-  width: 22%;
+  margin: 40px 2% 0 2%;
+  width: 275px;
 }
 
 h4 {

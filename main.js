@@ -26,7 +26,7 @@ addBtn.addEventListener('click', createElement);
 
 window.onload = function() {
   var keys = Object.keys(localStorage);
-    keys.forEach (key =>{
+    keys.forEach (function(key) {
     var parseObj = JSON.parse(localStorage.getItem(key));
     newPhoto = new Photo(parseObj.id, parseObj.title, parseObj.caption, parseObj.file, parseObj.favorite);
     photoArray.push(newPhoto);
@@ -62,17 +62,20 @@ function findIndexNumber(objId) {
   }
 }
 
-// function changeFavorite() {
-//   var cardIndex = findIndexNumber(event.target.parentElement.parentElement.dataset.id);
-//   console.log(cardIndex); 
-//   if (photoArray[cardIndex].favorite === false) {
-//     photoArray[cardIndex] = true;
-//     event.target.src = "images/favorite-active.svg";
-//     } else {
-//     photoArray[cardIndex] = false;
-//     event.target.src = "images/favorite.svg";  
-//     }
-//   }
+function changeFavorite(id) {
+  var cardIndex = findIndexNumber(id);
+  // var index = parseInt(cardIndex);
+  console.log(cardIndex); 
+  if (photoArray[cardIndex].favorite === false) {
+    photoArray[cardIndex].favorite = true;
+    event.target.src = "images/favorite-active.svg";
+    // saveToStorage();
+    } else {
+    photoArray[cardIndex].favorite = false;
+    event.target.src = "images/favorite.svg";
+    // saveToStorage();  
+    }
+  }
 
 
 
@@ -107,13 +110,13 @@ function appendCard(photo, fav) {
 function deleteCard (id) {
   var result = confirm("Are you sure you want to delete this photograph?");
   if (result) {
-    let element = document.querySelector(`[data-id="${id}"]`);
+    var element = document.querySelector(`[data-id="${id}"]`);
     element.remove();
-    let deleteIdea = photoArray.find(function(photo) {
+    var deleteIdea = photoArray.find(function(photo) {
       return id === photo.id;
     });
     deleteIdea.deleteFromStorage();
-    let deleteIndex = photoArray.findIndex(function(photo) {
+    var deleteIndex = photoArray.findIndex(function(photo) {
       return id === photo.id;
     });
     photoArray.splice(deleteIndex, 1)
