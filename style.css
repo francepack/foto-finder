@@ -230,12 +230,6 @@ p {
   width: 30px;
 }
 
-.card-body,
-.card-pic,
-.card-head {
-  border-bottom: 1px solid red;
-}
-
 /* Media Queries ****************** */
  @media screen and (max-width: 730px) {
   body {

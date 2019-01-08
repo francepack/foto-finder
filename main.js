@@ -26,7 +26,7 @@ window.onload = function() {
   var keys = Object.keys(localStorage);
     keys.forEach (key =>{
     var parseObj = JSON.parse(localStorage.getItem(key));
-    newPhoto = new Photo(parseObj.id, parseObj.title, parseObj.caption, parseObj.fav);
+    newPhoto = new Photo(parseObj.id, parseObj.title, parseObj.caption, parseObj.file, parseObj.fav);
     photoArray.push(newPhoto);
     appendCard(newPhoto); 
   })
