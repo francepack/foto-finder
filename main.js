@@ -16,7 +16,8 @@ addBtn.addEventListener('click', createElement);
 // photoArea.addEventListener('click', function(e) {
 //   if (e.target.classList.contains("delete-img")) {
 //     deleteCard(e);
-//   } else if (e.target.classList.contains("favorite-img")) {
+//   } else if ()
+// e.target.classList.contains("favorite-img") {
 //     changeFavorite(e);
 //   }
 // }) 
@@ -47,7 +48,6 @@ function createCard (e) {
     newPhoto.saveToStorage();
     photoArray.push(newPhoto);
     appendCard(newPhoto);
-
   } else {
     alert('Please enter a photo title and caption.');
     return false;
@@ -56,16 +56,24 @@ function createCard (e) {
 
 function findIndexNumber(objId) {
   for (var i = 0; i < photoArray.length; i++) {
-    if (array[i].id === objId) {
+    if (photoArray[i].id === objId) {
       return i;
     }
   }
 }
 
 // function changeFavorite() {
-//   var cardIndex = findIndexNumber(event.target.parentElement.parentElement.dataset.id); 
+//   var cardIndex = findIndexNumber(event.target.parentElement.parentElement.dataset.id);
+//   console.log(cardIndex); 
+//   if (photoArray[cardIndex].favorite === false) {
+//     photoArray[cardIndex] = true;
+//     event.target.src = "images/favorite-active.svg";
+//     } else {
+//     photoArray[cardIndex] = false;
+//     event.target.src = "images/favorite.svg";  
+//     }
 //   }
-// }
+
 
 
 function appendCard(photo, fav) {
@@ -88,7 +96,9 @@ function appendCard(photo, fav) {
         <img src="images/delete.svg" class="delete-img" 
         onclick="deleteCard(${photo.id})"
         >
-        <img src="${favoriteImg}" class="favorite-img">
+        <img src="${favoriteImg}" class="favorite-img"
+        onclick="changeFavorite(${photo.id})"
+        >
       </footer>
     </article>`
     photoArea.innerHTML = card + photoArea.innerHTML;
