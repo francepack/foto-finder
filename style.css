@@ -100,7 +100,7 @@ fieldset {
 }
 
 label {
-  /*position: absolute;*/
+  margin-bottom: 12px;
 }
 
 form {
@@ -112,6 +112,14 @@ fieldset input {
   height: 50px;
   margin-bottom: 50px;
   min-width: 460px;
+}
+
+.title-input {
+  margin-bottom: 22px;
+}
+
+.caption-input {
+  margin-bottom: 50px;
 }
 
 button {
@@ -127,7 +135,7 @@ button:hover {
   border-color: #1393DD;
 }
 
-button:focus {
+:focus {
   outline: 0;
 }
 

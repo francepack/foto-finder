@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>FotoFinder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="normalize.css">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <title>foto-finder</title>
 </head>
 <body>
   <header class="top-bar top-half">
@@ -32,7 +33,6 @@
         <input type="text" name="" class="caption-input">
       </form>
       <section class="input-buttons">
-        <!-- <button class="choose-btn">Choose File</button> -->
         <input type="file" name="file" id="file" class="choose-file-btn" />
           <label for="file">Choose a file</label>
         <button class="favorite-btn">View <span class="fav-num">0<span> Favorites</button>
@@ -53,7 +53,7 @@
       </section>
       <footer class="card-foot">
         <img src="images/delete.svg">
-        <img src="images/favorite.svg">
+        <img src="images/favorite.svg" class="favorite-btn">
       </footer>
     </article>
   </main>
