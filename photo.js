@@ -19,10 +19,10 @@ class Photo {
   //   this[type] = text;
   // }
   updatePhoto(newText) {
-    if (type === 'card-head-text') {
-      this.title = newText;
-      } else if (type === 'card-caption-text') {
-          this.caption = newText;  
-     }  
+    // if (type === 'card-head-text') {
+    //   this.title = newText;
+    //   } else if (type === 'card-caption-text') {
+    //       this.caption = newText;  
+    //  }  
   }
 }
