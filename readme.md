@@ -5,11 +5,11 @@ FotoFinder is an individual project that served as the final for Mod 1 of Turing
 
 ##Screenshots
 Here is the design we were asked to recreate:
-![fotofinder](images/foto-comp.png)
+![fotofinder](images/foto-comp1.png)
 
 Here is how it should look on a mobile device:
-![ideabox](images/foto-comp-mobile1.png)
-![ideabox](images/foto-comp-mobile2.png)
+![ideabox](images/foto-mobile-comp1.png)
+![ideabox](images/foto-mobile-comp2.png)
 
 Here is my site:
 ![ideabox](images/my-site1.png)
