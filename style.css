@@ -229,7 +229,7 @@ p {
 }
 
 /* Media Queries ****************** */
- @media screen and (max-width: 730px) {
+ @media screen and (max-width: 805px) {
   body {
     grid-template-rows: 180px 480px auto;
   }
@@ -257,7 +257,7 @@ p {
   }
  }
 
- @media screen and (max-width: 505px) {
+ @media screen and (max-width: 597px) {
   .top-bar {
     padding: 20px 5% 20px 5%;
   }
@@ -273,11 +273,15 @@ p {
   fieldset {
     width: 90%;
   }
+  .card {
+    margin: 20px auto 0 auto;
+    width: 70%;
+  }
 }
 
  @media screen and (max-width: 410px) {
   body {
-    grid-template-rows: 150px 365px auto;
+    grid-template-rows: 130px 395px auto;
   }
   h1 {
     font-size: 36px;

@@ -98,7 +98,10 @@ function changeFavorite(id) {
 
 function filterFavorites(e) {
   e.preventDefault();
-  
+  if (photo.favorite === true) {
+    
+  }
+
 }
 
 function appendCard(photo, fav) {
