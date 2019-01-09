@@ -11,17 +11,25 @@ var photoArray = [];
 var reader = new FileReader();
 var buttonCount = 0;
 var favNum = document.querySelector(".fav-num");
-// var photoCard = document.querySelector(".card")
+var file = document.querySelector(".choose-file-btn")
 
 //Event Listeners
 searchInput.addEventListener('keyup', searchPhotos);
 addBtn.addEventListener('click', createElement);
 favoriteBtn.addEventListener('click', filterFavorites);
+photoArea.addEventListener('dblclick', updateText);
+// file.addEventListener('input', enableAdd)
+
+// function enableAdd() {
+//   if (file.value !== '') {
+//     addBtn.disabled = false;
+//   }
+// }
+
 // photoArea.addEventListener('click', function(e) {
 //   if (e.target.classList.contains("delete-img")) {
 //     deleteCard(e);
-//   } else if ()
-// e.target.classList.contains("favorite-img") {
+//   } else if (e.target.classList.contains("favorite-img")) {
 //     changeFavorite(e);
 //   }
 // }) 
@@ -109,14 +117,9 @@ function filterFavorites(e) {
     clearCards();
     photoArray.forEach(function(photo) {
       trueCheck(photo);
-  })
+    })
   }
 }
-
-
-// (favoriteBtn.innerHTML === 'View All') {
-//     appendCard();
-//   }
 
 function trueCheck(photo) {
   if (photo.favorite === true) {
@@ -183,9 +186,19 @@ function searchPhotos (e) {
   })
 }
 
+function updateText(e) {
+  var cardIndex = findIndexNumber(e.target.parentElement.parentElement.dataset.id);
+    if (e.target.classList.contains('card-head-text')) {
+      photoArray[cardIndex].updatePhoto(e.target.innerText, 'card-head-text');
+    } else if (e.target.classList.contains('card-body-text')) {
+      photoArray[cardIndex].updatePhoto(e.target.innerText, 'card-body-text');
+    }
+    photoArray[cardIndex].saveToStorage(photoArray);
+}
+
 function clearCards() {
-  var cards = document.querySelectorAll('.card');
-  cards.forEach(function(card) {
+  var allCards = document.querySelectorAll('.card');
+  allCards.forEach(function(card) {
     card.remove();
   })
 }
@@ -194,5 +207,7 @@ function clearInput() {
   titleInput.value = '';
   captionInput.value = '';
 }
+
+
 
 

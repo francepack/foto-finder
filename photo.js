@@ -15,7 +15,14 @@ class Photo {
     localStorage.removeItem(this.id);
   }
 
-  updatePhoto() {
-
+  // updatePhoto(text, type) {
+  //   this[type] = text;
+  // }
+  updatePhoto(newText) {
+    if (type === 'card-head-text') {
+      this.title = newText;
+      } else if (type === 'card-caption-text') {
+          this.caption = newText;  
+     }  
   }
 }
