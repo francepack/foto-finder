@@ -9,7 +9,7 @@ body {
   background-color: #C2B2B4;
   display: grid;
   font-family: 'Open Sans', sans-serif;
-  grid-template-rows: 120px 480px auto;
+  grid-template-rows: 120px 460px auto;
 }
 
 /* Top bar ******************* */
@@ -185,7 +185,8 @@ button:hover {
 main {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  padding: 2em;
 }
 
 .card {
@@ -196,8 +197,9 @@ main {
   grid-template-columns: 1fr;
   grid-template-rows: 50px 150px 90px 60px;
   height: 350px;
-  margin: 40px 2% 0 2%;
-  width: 275px;
+  min-width: 250px;
+  margin: 12px 1%;
+  width: 23%;
 }
 
 h4 {
@@ -230,7 +232,7 @@ p {
 /* Media Queries ****************** */
  @media screen and (max-width: 805px) {
   body {
-    grid-template-rows: 180px 480px auto;
+    grid-template-rows: 180px 450px auto;
   }
   .top-bar {
     display: block;
@@ -280,7 +282,7 @@ p {
 
  @media screen and (max-width: 410px) {
   body {
-    grid-template-rows: 130px 395px auto;
+    grid-template-rows: 130px 420px auto;
   }
   h1 {
     font-size: 36px;
@@ -307,7 +309,7 @@ p {
     grid-template-columns: 44% 12% 44%;
   }
   .card {
-    margin: 20px auto 0 auto;
+    margin: 14px auto 0 auto;
     width: 90%;
   }
 }
