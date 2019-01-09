@@ -93,22 +93,35 @@ function changeFavorite(id) {
     updateButtonCount();
   }
 
-  function updateButtonCount() {
-    console.log('buttoncount');
-    favNum.innerHTML = buttonCount;
-  }
+function updateButtonCount() {
+  favNum.innerHTML = buttonCount;
+}
 
 function filterFavorites(e) {
-  e.preventDefault();
-  clearCards();
-  photoArray.forEach(function(photo) {
-    trueCheck(photo);
+  if (favoriteBtn.innerHTML === 'View All') {
+    clearCards();
+    photoArray.forEach(function(photo) {
+      appendCard(photo);
+    })
+    favoriteBtn.innerHTML = `View ${buttonCount} Favorites`;
+    } else {
+    e.preventDefault();
+    clearCards();
+    photoArray.forEach(function(photo) {
+      trueCheck(photo);
   })
+  }
 }
+
+
+// (favoriteBtn.innerHTML === 'View All') {
+//     appendCard();
+//   }
 
 function trueCheck(photo) {
   if (photo.favorite === true) {
     appendCard(photo);
+    favoriteBtn.innerHTML = "View All"
   }
 }
 
