@@ -15,14 +15,16 @@ class Photo {
     localStorage.removeItem(this.id);
   }
 
-  // updatePhoto(text, type) {
-  //   this[type] = text;
-  // }
-  updatePhoto(newText) {
-    // if (type === 'card-head-text') {
-    //   this.title = newText;
-    //   } else if (type === 'card-caption-text') {
-    //       this.caption = newText;  
-    //  }  
+  
+  updatePhoto(newText, type) {
+    if (type === 'card-head-text') {
+      this.title = newText;
+      } else if (type === 'card-body-text') {
+          this.caption = newText;  
+      }
+    }
   }
-}
+
+  // updatePhoto(newText, classType) {
+  //   this[classType] = newText;
+  // }

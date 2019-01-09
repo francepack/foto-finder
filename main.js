@@ -16,24 +16,8 @@ var favNum = document.querySelector(".fav-num");
 searchInput.addEventListener('keyup', searchPhotos);
 addBtn.addEventListener('click', createElement);
 favoriteBtn.addEventListener('click', filterFavorites);
-photoArea.addEventListener('dblclick', updateText);
-// file.addEventListener('input', enableAdd)
+photoArea.addEventListener('click', updateText);
 
-// function enableAdd() {
-//   if (file.value !== '') {
-//     addBtn.disabled = false;
-//   }
-// }
-
-// photoArea.addEventListener('click', function(e) {
-//   if (e.target.classList.contains("delete-img")) {
-//     deleteCard(e);
-//   } else if (e.target.classList.contains("favorite-img")) {
-//     changeFavorite(e);
-//   }
-// }) 
-
-//idea for bottom bar event delegation           
 
 window.onload = function() {
   var keys = Object.keys(localStorage);
@@ -79,6 +63,7 @@ function createCard (e) {
 function findIndexNumber(objId) {
   for (var i = 0; i < photoArray.length; i++) {
     if (photoArray[i].id === objId) {
+      console.log(i);
       return i;
     }
   }
@@ -181,17 +166,6 @@ function searchPhotos (e) {
   })
 }
 
-function updateText(e) {
-  var cardIndex = findIndexNumber(e.target.parentElement.parentElement.dataset.id);
-  console.log(cardIndex);
-    if (e.target.classList.contains('card-head-text')) {
-      photoArray[cardIndex].updatePhoto(e.target.innerText, 'card-head-text');
-    } else if (e.target.classList.contains('card-body-text')) {
-      photoArray[cardIndex].updatePhoto(e.target.innerText, 'card-body-text');
-    }
-    photoArray[cardIndex].saveToStorage(photoArray);
-}
-
 function clearCards() {
   var allCards = document.querySelectorAll('.card');
   allCards.forEach(function(card) {
@@ -204,6 +178,38 @@ function clearInput() {
   captionInput.value = '';
 }
 
+function updateText(e) {
+  var cardIndex = findIndexNumber(parseInt(e.target.parentElement.parentElement.dataset.id));
+  console.log(e.target.parentElement.parentElement.dataset.id);
+    if (e.target.classList.contains('card-head-text')) {
+      photoArray[cardIndex].updatePhoto(e.target.innerText, 'card-head-text');
+    } else if (e.target.classList.contains('card-body-text')) {
+      photoArray[cardIndex].updatePhoto(e.target.innerText, 'card-body-text');
+    }
+    photoArray[cardIndex].saveToStorage(photoArray);
+}
 
 
+
+
+//Couple JS ideas I may want to revisit
+
+
+//idea for bottom bar event delegation    
+// photoArea.addEventListener('click', function(e) {
+//   if (e.target.classList.contains("delete-img")) {
+//     deleteCard(e);
+//   } else if (e.target.classList.contains("favorite-img")) {
+//     changeFavorite(e);
+//   }
+// })    
+
+//idea for enable/disable addbtn
+// file.addEventListener('input', enableAdd)
+
+// function enableAdd() {
+//   if (file.value !== '') {
+//     addBtn.disabled = false;
+//   }
+// }    
 
