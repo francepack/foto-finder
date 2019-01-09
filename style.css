@@ -7,8 +7,8 @@
 
 body {
   background-color: #C2B2B4;
-  font-family: 'Open Sans', sans-serif;
   display: grid;
+  font-family: 'Open Sans', sans-serif;
   grid-template-rows: 120px 480px auto;
 }
 
@@ -20,9 +20,9 @@ body {
 }
 
 .top-bar {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .title {
@@ -32,10 +32,10 @@ body {
 h1 {
   color: #FFFFFF;
   font-size: 46px;
+  line-height: 40px;
   margin-top: 0px;
   margin-left: 40px;
   text-transform: uppercase;
-  line-height: 40px;
 }
 
 .title-word-left {
@@ -48,9 +48,9 @@ h1 {
 
 .logo {
   height: 55px;
-  width: 55px;
   position: relative;
   top: 7px;
+  width: 55px;
 }
 
 .search-area {
@@ -94,9 +94,8 @@ article {
 
 fieldset {
   border: 0;
-  width: 50%;
   margin-top: 20px;
-  max-width:;
+  width: 50%;
 }
 
 label {
@@ -123,16 +122,16 @@ fieldset input {
 }
 
 button {
-  border: 0;
   background-color: #5B4447;
+  border: 0;
   color: #FFFFFF;
   height: 50px;
 }
 
 button:hover {
-  cursor: pointer;
   background-color: #1393DD;
   border-color: #1393DD;
+  cursor: pointer;
 }
 
 :focus {
@@ -141,19 +140,19 @@ button:hover {
 
 .input-buttons {
   display: grid;
-  grid-template-columns: 42% 16% 42%;
-  grid-template-rows: auto;
   grid-template-areas: 
   "choose choose choose"
   "fav . add";
+  grid-template-columns: 42% 16% 42%;
+  grid-template-rows: auto;
 }
 
 .choose-file-btn {
-  width: 0.1px;
   height: 0.1px;
   opacity: 0;
   overflow: hidden;
   position: absolute;
+  width: 0.1px;
   z-index: -1;
 }
 
@@ -185,8 +184,8 @@ button:hover {
 
 main {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .card {
@@ -301,8 +300,8 @@ p {
     margin-bottom: 30px;
   }
   .choose-file-btn + label {
-    padding-top: 18px;
     margin-bottom: 30px;
+    padding-top: 18px;
   }
   .input-buttons {
     grid-template-columns: 44% 12% 44%;
