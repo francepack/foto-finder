@@ -18,6 +18,7 @@ addBtn.addEventListener('click', createElement);
 favoriteBtn.addEventListener('click', filterFavorites);
 photoArea.addEventListener('click', updateText);
 
+
 window.onload = function() {
   var keys = Object.keys(localStorage);
     keys.forEach (function(key) {
@@ -177,8 +178,6 @@ function clearInput() {
   captionInput.value = '';
 }
 
-//Attempt at code for updating text
-
 function updateText(e) {
   var cardIndex = findIndexNumber(parseInt(e.target.parentElement.parentElement.dataset.id));
   console.log(e.target.parentElement.parentElement.dataset.id);
@@ -194,6 +193,8 @@ function updateText(e) {
 
 
 //Couple JS ideas I may want to revisit
+
+
 //idea for bottom bar event delegation    
 // photoArea.addEventListener('click', function(e) {
 //   if (e.target.classList.contains("delete-img")) {
