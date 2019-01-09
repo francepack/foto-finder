@@ -15,6 +15,7 @@ var favNum = document.querySelector(".fav-num");
 //Event Listeners
 searchInput.addEventListener('keyup', searchPhotos);
 addBtn.addEventListener('click', createElement);
+favoriteBtn.addEventListener('click', filterFavorites)
 // photoArea.addEventListener('click', function(e) {
 //   if (e.target.classList.contains("delete-img")) {
 //     deleteCard(e);
@@ -41,7 +42,6 @@ window.onload = function() {
 function countFavorites() {
   photoArray.forEach(function(count) {
     if (count.favorite === true) {
-    console.log(count.favorite);
     buttonCount += 1;
     }
   })
@@ -77,12 +77,10 @@ function findIndexNumber(objId) {
 
 function changeFavorite(id) {
   var cardIndex = findIndexNumber(id);
-  console.log(cardIndex); 
   if (photoArray[cardIndex].favorite === false) {
     photoArray[cardIndex].favorite = true;
     event.target.src = "images/favorite-active.svg";
     photoArray[cardIndex].saveToStorage();
-    //button count function
     buttonCount++;
     } else {
     photoArray[cardIndex].favorite = false;
@@ -98,7 +96,10 @@ function changeFavorite(id) {
     favNum.innerHTML = buttonCount;
   }
 
-
+function filterFavorites(e) {
+  e.preventDefault();
+  
+}
 
 function appendCard(photo, fav) {
   var favoriteImg;
@@ -157,29 +158,5 @@ function searchPhotos (e) {
     appendCard(obj)
   })
 }
-
-//Travis code
-// var create = document.querySelector('.add-btn');
-// var input = document.querySelector('.choose-file-btn');
-// var photoSection = document.querySelector('.card-pic');
-// var imagesArr = JSON.parse(localStorage.getItem('photos')) || [];
-
-
-// window.addEventListener('load', appendPhotos);
-// create.addEventListener('click', createElement);
-
-// function appendPhotos() {
-//   imagesArr.forEach(function (photo) {
-//     photoSection.innerHTML += `<img src=${photo.file} />`
-//   })
-// }
-
-// function addPhoto(e) {
-//   console.log(e.target.result);
-//   var newPhoto = new Photo(Date.now(), e.target.result);
-//   photoSection.innerHTML += `<img src=${e.target.result} />`;
-//   imagesArr.push(newPhoto)
-//   newPhoto.saveToStorage(imagesArr)
-// }
 
 
