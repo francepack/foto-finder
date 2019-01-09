@@ -188,6 +188,7 @@ function searchPhotos (e) {
 
 function updateText(e) {
   var cardIndex = findIndexNumber(e.target.parentElement.parentElement.dataset.id);
+  console.log(cardIndex);
     if (e.target.classList.contains('card-head-text')) {
       photoArray[cardIndex].updatePhoto(e.target.innerText, 'card-head-text');
     } else if (e.target.classList.contains('card-body-text')) {
