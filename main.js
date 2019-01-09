@@ -11,11 +11,12 @@ var photoArray = [];
 var reader = new FileReader();
 var buttonCount = 0;
 var favNum = document.querySelector(".fav-num");
+// var photoCard = document.querySelector(".card")
 
 //Event Listeners
 searchInput.addEventListener('keyup', searchPhotos);
 addBtn.addEventListener('click', createElement);
-favoriteBtn.addEventListener('click', filterFavorites)
+favoriteBtn.addEventListener('click', filterFavorites);
 // photoArea.addEventListener('click', function(e) {
 //   if (e.target.classList.contains("delete-img")) {
 //     deleteCard(e);
@@ -99,10 +100,16 @@ function changeFavorite(id) {
 
 function filterFavorites(e) {
   e.preventDefault();
+  clearCards();
+  photoArray.forEach(function(photo) {
+    trueCheck(photo);
+  })
+}
+
+function trueCheck(photo) {
   if (photo.favorite === true) {
-
+    appendCard(photo);
   }
-
 }
 
 function appendCard(photo, fav) {
@@ -160,6 +167,13 @@ function searchPhotos (e) {
   photoArea.innerHTML = "";
   filteredPhotos.forEach(function(obj) {
     appendCard(obj)
+  })
+}
+
+function clearCards() {
+  var cards = document.querySelectorAll('.card');
+  cards.forEach(function(card) {
+    card.remove();
   })
 }
 
