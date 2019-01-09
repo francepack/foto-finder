@@ -61,6 +61,7 @@ function createCard (e) {
     newPhoto.saveToStorage();
     photoArray.push(newPhoto);
     appendCard(newPhoto);
+    clearInput();
   } else {
     alert('Please enter a photo title and caption.');
     return false;
@@ -99,7 +100,7 @@ function changeFavorite(id) {
 function filterFavorites(e) {
   e.preventDefault();
   if (photo.favorite === true) {
-    
+
   }
 
 }
@@ -160,6 +161,11 @@ function searchPhotos (e) {
   filteredPhotos.forEach(function(obj) {
     appendCard(obj)
   })
+}
+
+function clearInput() {
+  titleInput.value = '';
+  captionInput.value = '';
 }
 
 
