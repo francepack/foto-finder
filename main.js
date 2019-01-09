@@ -1,67 +1,153 @@
 //Button and Input grabs
 var searchInput = document.querySelector(".search-bar");
 var searchBtn = document.querySelector(".search-btn");
-// var titleInput = document.querySelector(".title-input");
-// var captionInput = document.querySelector(".caption-input");
+var titleInput = document.querySelector('.title-input');
+var captionInput = document.querySelector('.caption-input');
 var chooseBtn = document.querySelector(".choose-btn");
 var favoriteBtn = document.querySelector(".favorite-btn");
 var addBtn = document.querySelector(".add-btn");
 var photoArea = document.querySelector(".photo-card-area");
 var photoArray = [];
-var favoriteImage = [];
 var reader = new FileReader();
+var buttonCount = 0;
+var favNum = document.querySelector(".fav-num");
+// var photoCard = document.querySelector(".card")
 
 //Event Listeners
 searchInput.addEventListener('keyup', searchPhotos);
-addBtn.addEventListener('click', createCard);
-// favoriteBtn.addEventListener('click', changeHeart);
+addBtn.addEventListener('click', createElement);
+favoriteBtn.addEventListener('click', filterFavorites);
+// photoArea.addEventListener('click', function(e) {
+//   if (e.target.classList.contains("delete-img")) {
+//     deleteCard(e);
+//   } else if ()
+// e.target.classList.contains("favorite-img") {
+//     changeFavorite(e);
+//   }
+// }) 
+
+//idea for bottom bar event delegation           
 
 window.onload = function() {
   var keys = Object.keys(localStorage);
-    keys.forEach (key =>{
+    keys.forEach (function(key) {
     var parseObj = JSON.parse(localStorage.getItem(key));
-    newPhoto = new Photo(parseObj.id, parseObj.title, parseObj.caption, parseObj.fav);
+    newPhoto = new Photo(parseObj.id, parseObj.title, parseObj.caption, parseObj.file, parseObj.favorite);
     photoArray.push(newPhoto);
     appendCard(newPhoto); 
   })
+    countFavorites();
+    updateButtonCount();
+}
+
+function countFavorites() {
+  photoArray.forEach(function(count) {
+    if (count.favorite === true) {
+    buttonCount += 1;
+    }
+  })
+}
+
+function createElement(e) {
+  if (file.files[0]) {
+    reader.readAsDataURL(file.files[0]); 
+    reader.onload = createCard;
+  }
 }
 
 function createCard (e) {
   e.preventDefault();
-  var titleInput = document.querySelector('.title-input');
-  var captionInput = document.querySelector('.caption-input');
-  const newPhoto = new Photo(Date.now(), titleInput.value, captionInput.value);
+  const newPhoto = new Photo(Date.now(), titleInput.value, captionInput.value, e.target.result);
   if (captionInput.value !== "" && titleInput.value !== "") {
     newPhoto.saveToStorage();
     photoArray.push(newPhoto);
     appendCard(newPhoto);
+    clearInput();
   } else {
     alert('Please enter a photo title and caption.');
     return false;
   }
 }
 
-// function changeHeart() {
-//   if (this.favorite === false) {
-//     console.log(15);
-//     element.src = "images/favorite-active.svg"
+function findIndexNumber(objId) {
+  for (var i = 0; i < photoArray.length; i++) {
+    if (photoArray[i].id === objId) {
+      return i;
+    }
+  }
+}
+
+function changeFavorite(id) {
+  var cardIndex = findIndexNumber(id);
+  if (photoArray[cardIndex].favorite === false) {
+    photoArray[cardIndex].favorite = true;
+    event.target.src = "images/favorite-active.svg";
+    photoArray[cardIndex].saveToStorage();
+    buttonCount++;
+    } else {
+    photoArray[cardIndex].favorite = false;
+    event.target.src = "images/favorite.svg";
+    photoArray[cardIndex].saveToStorage();
+    buttonCount--; 
+    }
+    updateButtonCount();
+  }
+
+function updateButtonCount() {
+  favNum.innerHTML = buttonCount;
+}
+
+function filterFavorites(e) {
+  if (favoriteBtn.innerHTML === 'View All') {
+    clearCards();
+    photoArray.forEach(function(photo) {
+      appendCard(photo);
+    })
+    favoriteBtn.innerHTML = `View ${buttonCount} Favorites`;
+    } else {
+    e.preventDefault();
+    clearCards();
+    photoArray.forEach(function(photo) {
+      trueCheck(photo);
+  })
+  }
+}
+
+
+// (favoriteBtn.innerHTML === 'View All') {
+//     appendCard();
 //   }
-// }
 
+function trueCheck(photo) {
+  if (photo.favorite === true) {
+    appendCard(photo);
+    favoriteBtn.innerHTML = "View All"
+  }
+}
 
-function appendCard(photo) {
+function appendCard(photo, fav) {
+  var favoriteImg;
+  if(photo.favorite === true) {
+    favoriteImg = "images/favorite-active.svg";
+  } else {
+    favoriteImg = "images/favorite.svg";
+  }
   var card = 
     `<article class="card" data-id="${photo.id}">
       <header class="card-head">
         <h4 class="card-head-text" contenteditable="true">${photo.title}</h4>
       </header>
-      <section class="card-pic" background-image=url("${photo.file}")></section>
+      <section class="card-pic"><img src="${photo.file}" class="card-img"></section>
       <section class="card-body">
         <p class="card-body-text" contenteditable="true">${photo.caption}</p>
       </section>
       <footer class="card-foot">
-        <img src="images/delete.svg" onclick="deleteCard(${photo.id})">
-        <img src="images/favorite.svg" onclick="">
+        <img src="images/delete.svg" class="delete-img" 
+        onclick="deleteCard(${photo.id})"
+        >
+        <img src="${favoriteImg}" class="favorite-img"
+        onclick="changeFavorite(${photo.id})"
+        >
       </footer>
     </article>`
     photoArea.innerHTML = card + photoArea.innerHTML;
@@ -70,13 +156,13 @@ function appendCard(photo) {
 function deleteCard (id) {
   var result = confirm("Are you sure you want to delete this photograph?");
   if (result) {
-    let element = document.querySelector(`[data-id="${id}"]`);
+    var element = document.querySelector(`[data-id="${id}"]`);
     element.remove();
-    let deleteIdea = photoArray.find(function(photo) {
+    var deleteIdea = photoArray.find(function(photo) {
       return id === photo.id;
     });
     deleteIdea.deleteFromStorage();
-    let deleteIndex = photoArray.findIndex(function(photo) {
+    var deleteIndex = photoArray.findIndex(function(photo) {
       return id === photo.id;
     });
     photoArray.splice(deleteIndex, 1)
@@ -97,36 +183,16 @@ function searchPhotos (e) {
   })
 }
 
-//Travis code
-// var create = document.querySelector('.add-btn');
-// var input = document.querySelector('.choose-file-btn');
-// var photoSection = document.querySelector('.card-pic');
-// var imagesArr = JSON.parse(localStorage.getItem('photos')) || [];
+function clearCards() {
+  var cards = document.querySelectorAll('.card');
+  cards.forEach(function(card) {
+    card.remove();
+  })
+}
 
-
-// window.addEventListener('load', appendPhotos);
-// create.addEventListener('click', createElement);
-
-// function appendPhotos() {
-//   imagesArr.forEach(function (photo) {
-//     photoSection.innerHTML += `<img src=${photo.file} />`
-//   })
-// }
-
-// function createElement(e) {
-//   console.log(input)
-//   if (input.files[0]) {
-//     reader.readAsDataURL(input.files[0]); 
-//     reader.onload = createCard;
-//   }
-// }
-
-// function addPhoto(e) {
-//   console.log(e.target.result);
-//   var newPhoto = new Photo(Date.now(), e.target.result);
-//   photoSection.innerHTML += `<img src=${e.target.result} />`;
-//   imagesArr.push(newPhoto)
-//   newPhoto.saveToStorage(imagesArr)
-// }
+function clearInput() {
+  titleInput.value = '';
+  captionInput.value = '';
+}
 
 
